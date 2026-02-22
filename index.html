@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr">
-<head>
+<html lang="en" dir="ltr" data-theme="dark"><head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -26,6 +25,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+
+  <!-- og image -->
+<meta property="og:title" content="Reza Akbari | Business Intelligence Developer">
+<meta property="og:description" content="Business Intelligence | SQL | Data Modeling | BI Dashboards">
+<meta property="og:image" content="https://rezaakbari.github.io/images/og-image.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rezaakbari.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+
+
+  <script>
+(function () {
+  try {
+    const LS_THEME = "pro_portfolio_theme";
+    const saved = localStorage.getItem(LS_THEME);
+    const theme = (saved === "light" || saved === "dark") ? saved : "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})();
+</script>
+
+
 
   <style>
     /* =========================================================
@@ -55,6 +82,9 @@
 
       --a: #7c5cff;
       --a2:#31d0aa;
+
+      --accent: var(--a);
+      --accent2: var(--a2);
       --warn:#ffb020;
       --danger:#ff4d5a;
 
@@ -364,6 +394,8 @@
       background-clip:text;
       color: transparent;
     }
+    /* gradient-text tweak for full FA headline */
+    h1 .gradient-text{display:inline-block; padding-bottom:2px;}
     .lead{
       margin: 0 0 14px;
       color: var(--muted);
@@ -907,6 +939,377 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
     display:inline-block;
 }
 
+
+/* DARK MODE BUTTON FIX */
+.cert-btn,
+.details-btn{
+    color:#ffffff !important;
+}
+html[data-theme="dark"] .cert-btn,
+html[data-theme="dark"] .details-btn,
+html[data-theme="dark"] .link{
+    color:#ffffff !important;
+}
+
+
+/* Modern Theme Toggle (moon in light, sun in dark) */
+/* Modern Theme Toggle (Moon in Light, Sun in Dark) */
+.theme-toggle{
+  width:60px;
+  height:30px;
+  border:1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 62%, transparent);
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+  transition:.22s ease;
+  display:inline-block;
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
+}
+.theme-toggle:focus-visible{
+  outline: 3px solid color-mix(in srgb, var(--a) 35%, transparent);
+  outline-offset: 3px;
+}
+.theme-toggle::after{
+  content:"";
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0,0,0,.35);
+  transition:.22s ease;
+}
+.theme-toggle::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  right:8px;
+  width:18px;
+  height:18px;
+  background-repeat:no-repeat;
+  background-size:18px 18px;
+  opacity:.92;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+  /* moon icon (shown in LIGHT to switch to dark) */
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230b1020"><path d="M21.64 13a9 9 0 0 1-10.6-10.6A1 1 0 0 0 9.86 1.2 11 11 0 1 0 22.8 14.14a1 1 0 0 0-1.16-1.14ZM12 21a9 9 0 0 1-1.18-17.92A11.02 11.02 0 0 0 20.92 13.18 9 9 0 0 1 12 21Z"/></svg>');
+}
+html[data-theme="dark"] .theme-toggle{
+  background: linear-gradient(135deg, rgba(251,191,36,.22), rgba(249,115,22,.16));
+  border-color: color-mix(in srgb, var(--border) 70%, rgba(255,255,255,.18));
+}
+html[data-theme="dark"] .theme-toggle::after{
+  transform:translateX(30px);
+}
+/* Sun icon (shown in DARK to switch to light) */
+html[data-theme="dark"] .theme-toggle::before{
+  left:10px;
+  right:auto;
+  /* sun icon (shown in DARK to switch to light) */
+background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 18.36l1.42 1.42"/><path d="M19.78 4.22l-1.42 1.42"/><path d="M5.64 18.36l-1.42 1.42"/></svg>');
+}
+/* Luxury Glow for primary actions */
+.btn.primary, .details-btn, .cert-btn{
+  position: relative;
+  isolation: isolate;
+}
+.btn.primary::before, .details-btn::before, .cert-btn::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: inherit;
+  background: radial-gradient(120px 60px at 20% 10%, rgba(124,92,255,.55), transparent 60%),
+              radial-gradient(140px 70px at 90% 30%, rgba(49,208,170,.45), transparent 62%);
+  filter: blur(14px);
+  opacity: .0;
+  z-index:-1;
+  transition: .22s ease;
+}
+.btn.primary:hover::before, .details-btn:hover::before, .cert-btn:hover::before{
+  opacity: .95;
+}
+.btn.primary:hover, .details-btn:hover, .cert-btn:hover{
+  transform: translateY(-1px);
+}
+
+
+/* Button contrast (dark mode) */
+.details-btn, .cert-btn{
+  color:#fff !important;
+}
+html[data-theme="dark"] .details-btn,
+html[data-theme="dark"] .cert-btn{
+  color:#fff !important;
+  border-color: color-mix(in srgb, var(--border) 65%, rgba(255,255,255,.18)) !important;
+}
+
+
+/* Cert button visibility (strong) */
+.cert-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid color-mix(in srgb, var(--border) 65%, rgba(255,255,255,.18));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 92%, #0000), color-mix(in srgb, var(--accent2) 82%, #0000));
+  color:#fff !important;
+  font-weight: 900;
+  font-size: 13px;
+  cursor:pointer;
+  box-shadow: 0 16px 36px rgba(0,0,0,.28);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+.cert-btn:hover{ transform: translateY(-1px); }
+.cert-btn:active{ transform: translateY(0px); }
+
+
+/* Certifications headbar */
+.cert-headbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin: 10px 0 6px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border:1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 55%, transparent);
+}
+.removed-title{
+  font-weight: 950;
+  letter-spacing: -.2px;
+}
+.removed-note{
+  color: var(--muted);
+  font-size: 13px;
+}
+html[lang="fa"] .cert-headbar{ direction: rtl; text-align:right; }
+html[lang="fa"] .removed-note{ text-align:right; }
+
+
+/* Toast (luxury, minimal) */
+.toast-host{
+  position:fixed;
+  inset-inline: 14px;
+  bottom: 14px;
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  align-items: flex-end;
+  z-index: 99999;
+  pointer-events:none;
+}
+html[dir="rtl"] .toast-host{ align-items: flex-start; }
+.toast{
+  pointer-events:auto;
+  width: min(420px, calc(100vw - 28px));
+  border-radius: 18px;
+  border:1px solid color-mix(in srgb, var(--border) 75%, rgba(255,255,255,.14));
+  background:
+    radial-gradient(520px 140px at 12% 0%, rgba(124,92,255,.18), transparent 62%),
+    radial-gradient(520px 140px at 88% 0%, rgba(49,208,170,.12), transparent 62%),
+    color-mix(in srgb, var(--card2) 66%, transparent);
+  backdrop-filter: var(--glass);
+  box-shadow: var(--shadow);
+  padding: 12px 12px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  transform: translateY(12px);
+  opacity:0;
+  animation: toastIn .28s ease forwards;
+}
+.toast .ico{
+  width:34px; height:34px;
+  border-radius: 12px;
+  display:grid; place-items:center;
+  flex: 0 0 auto;
+  border:1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 55%, transparent);
+}
+.toast.ok .ico{ background: rgba(49,208,170,.14); border-color: rgba(49,208,170,.28); }
+.toast.err .ico{ background: rgba(255,77,90,.14); border-color: rgba(255,77,90,.30); }
+.toast b{ display:block; font-weight: 950; margin-top:-2px; }
+.toast p{ margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.toast .x{
+  margin-inline-start:auto;
+  border:0;
+  background: transparent;
+  color: var(--muted);
+  cursor:pointer;
+  font-weight: 950;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+.toast .x:hover{ background: color-mix(in srgb, var(--card2) 55%, transparent); color: var(--text); }
+@keyframes toastIn{ to{ transform: translateY(0); opacity:1; } }
+@keyframes toastOut{ to{ transform: translateY(10px); opacity:0; } }
+
+
+/* =========================================================
+   Fullscreen Result Animation (Success / Error)
+   - plays in center, then fades out automatically
+   ========================================================= */
+
+.resultfx{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  place-items: center;
+  padding: 18px;
+  background: radial-gradient(900px 520px at 50% 10%, rgba(124,92,255,.18), transparent 60%),
+              radial-gradient(900px 520px at 50% 85%, rgba(49,208,170,.14), transparent 62%),
+              rgba(0,0,0,.62);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+.resultfx.open{ display: grid; }
+.resultfx.show{ opacity: 1; }
+
+.resultfx-card{
+  width: min(520px, 92vw);
+  border-radius: 26px;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, rgba(255,255,255,.16));
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  box-shadow: 0 30px 90px rgba(0,0,0,.55);
+  overflow: hidden;
+  position: relative;
+}
+.resultfx-card::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background: radial-gradient(160px 80px at 20% 20%, rgba(124,92,255,.45), transparent 62%),
+              radial-gradient(180px 90px at 85% 30%, rgba(49,208,170,.35), transparent 64%);
+  filter: blur(18px);
+  opacity: .75;
+  pointer-events:none;
+}
+.resultfx-inner{
+  position: relative;
+  padding: 18px 18px 16px;
+  display: grid;
+  gap: 10px;
+}
+.resultfx-top{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+}
+.resultfx-title{
+  font-weight: 950;
+  letter-spacing: -.3px;
+  font-size: 16px;
+}
+.resultfx-sub{
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 13px;
+  margin: 0;
+}
+.resultfx-icon{
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  display:grid; place-items:center;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 65%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+.resultfx-icon::before{
+  content:"";
+  position:absolute; inset:-30px;
+  background: conic-gradient(from 180deg, rgba(124,92,255,.55), rgba(49,208,170,.55), rgba(255,176,32,.38), rgba(124,92,255,.55));
+  filter: blur(16px);
+  opacity: .55;
+  animation: spinGlow 1.4s linear infinite;
+}
+.resultfx-icon svg{
+  position: relative;
+  width: 36px; height: 36px;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.35));
+}
+@keyframes spinGlow{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+.resultfx-burst{
+  position: absolute;
+  inset: 0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.spark{
+  position:absolute;
+  width:10px; height:10px;
+  border-radius:999px;
+  background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.35));
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+  opacity: 0;
+}
+.resultfx.show .spark{
+  animation: sparkPop 1.05s ease forwards;
+}
+@keyframes sparkPop{
+  0%{ transform: translate(var(--x0), var(--y0)) scale(.2); opacity: 0; }
+  18%{ opacity: 1; }
+  100%{ transform: translate(var(--x1), var(--y1)) scale(1.0); opacity: 0; }
+}
+
+.resultfx-actions{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  padding: 0 18px 16px;
+}
+.resultfx-actions .btn{
+  box-shadow: none;
+}
+.resultfx-actions .btn.primary{
+  padding: 10px 14px;
+}
+
+/* RTL inside overlay */
+html[lang="fa"] .resultfx-card{ direction: rtl; text-align:right; }
+html[lang="fa"] .resultfx-actions{ justify-content:flex-start; }
+
+
+-orb{
+  background: linear-gradient(135deg, rgba(49,208,170,.20), rgba(124,92,255,.14));
+  border-color: rgba(49,208,170,.28);
+}
+.resultfx.error .resultfx-orb{
+  background: linear-gradient(135deg, rgba(255,77,90,.18), rgba(255,176,32,.10));
+  border-color: rgba(255,77,90,.30);
+}
+.resultfx.error .resultfx-card{
+  animation: resultCardIn .36s ease forwards, subtleShake .55s ease .2s 1;
+}
+@keyframes subtleShake{
+  0%{transform: translateY(0) scale(1)}
+  20%{transform: translateY(0) scale(1) rotate(-.5deg)}
+  40%{transform: translateY(0) scale(1) rotate(.6deg)}
+  60%{transform: translateY(0) scale(1) rotate(-.4deg)}
+  80%{transform: translateY(0) scale(1) rotate(.3deg)}
+  100%{transform: translateY(0) scale(1)}
+}
+
+/* Exit */
+.resultfx.hide{
+  opacity:0;
+  transition: opacity .22s ease;
+}
+.resultfx.hide .resultfx-card{
+  animation: resultCardOut .22s ease forwards;
+}
+@keyframes resultCardOut{
+  to{ transform: translateY(10px) scale(.98); opacity:0; }
+}
+
 </style>
 
   <!-- JSON-LD: Person (edit values) -->
@@ -948,17 +1351,12 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
       </nav>
 
       <div class="actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle theme"></button>
         <div class="toggle" role="group" aria-label="Language toggle">
-          <button id="btnEN" type="button">EN</button>
-          <button id="btnFA" type="button">FA</button>
+          <button id="btnEN" type="button" onclick="window.__setLang && window.__setLang('en')">EN</button>
+          <button id="btnFA" type="button" onclick="window.__setLang && window.__setLang('fa')">FA</button>
         </div>
-
-        <button class="btn pill" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">
-          <span aria-hidden="true">🌓</span>
-          <span class="sr-only" data-i18n="theme">Theme</span>
-        </button>
-
-        <button class="btn" id="menuBtn" type="button" data-i18n="menu">Menu</button>
+<button class="btn" id="menuBtn" type="button" data-i18n="menu">Menu</button>
         <a class="btn primary" href="#contact" data-i18n="cta.top">Start Collaboration</a>
       </div>
     </div>
@@ -970,7 +1368,7 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
       <div class="drawer-head">
         <b data-i18n="drawer.title">Menu</b>
         <button class="btn" id="closeDrawer" type="button" data-i18n="drawer.close">Close</button>
-      </div>
+</div>
       <div class="drawer-nav">
         <a href="#home" data-i18n="nav.home">Home</a>
         <a href="#services" data-i18n="nav.services">Services</a>
@@ -1332,7 +1730,7 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="kicker" data-i18n="cert.kicker">گواهی‌ها</div>
+          <div class="kicker"><span class="dot"></span><span data-i18n="cert.kicker">گواهی‌ها</span></div>
           <h2 class="section-title" data-i18n="cert.title">Certifications</h2>
           <p class="section-desc" data-i18n="cert.desc">مدارک و گواهی‌های تخصصی من</p>
         </div>
@@ -1342,19 +1740,19 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
         <div class="cert-card">
           <h3>Microsoft Power BI</h3>
           <p>Certified Associate – 2024</p>
-          <button class="cert-btn" onclick="openCertModal('Power BI Certificate','/assets/powerbi.jpg')">View Certificate</button>
+          <button class="cert-btn" type="button" onclick="openCertModal('Power BI Certificate','/assets/powerbi.jpg')"><span data-i18n="cert.view">View Certificate</span></button>
         </div>
 
         <div class="cert-card">
           <h3>Advanced SQL</h3>
           <p>Query Optimization – 2023</p>
-          <button class="cert-btn" onclick="openCertModal('SQL Certificate','/assets/sql.jpg')">View Certificate</button>
+          <button class="cert-btn" type="button" onclick="openCertModal('SQL Certificate','/assets/sql.jpg')"><span data-i18n="cert.view">View Certificate</span></button>
         </div>
 
         <div class="cert-card">
           <h3>Data Modeling</h3>
           <p>Star Schema & KPIs – 2022</p>
-          <button class="cert-btn" onclick="openCertModal('Data Modeling Certificate','/assets/modeling.jpg')">View Certificate</button>
+          <button class="cert-btn" type="button" onclick="openCertModal('Data Modeling Certificate','/assets/modeling.jpg')"><span data-i18n="cert.view">View Certificate</span></button>
         </div>
       </div>
     </div>
@@ -1533,19 +1931,23 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
           <div class="card">
             <h3 style="margin:0 0 10px; font-size:16px; font-weight:950" data-i18n="contact.formTitle">Send a message</h3>
 
-            <form id="contactForm">
+            <form id="contactForm" data-formspree="https://formspree.io/f/xjgeapar">
               <div class="field">
                 <label for="name" data-i18n="form.nameLabel">Name</label>
-                <input id="name" type="text" placeholder="Your name" required />
+                <input id="name" name="name" type="text" placeholder="Your name" required />
               </div>
               <div class="field">
                 <label for="email" data-i18n="form.emailLabel">Email</label>
-                <input id="email" type="email" placeholder="Email" required />
+                <input id="email" name="email" type="email" placeholder="Email" required />
               </div>
               <div class="field">
                 <label for="message" data-i18n="form.msgLabel">Message</label>
-                <textarea id="message" placeholder="Your message..." required></textarea>
+                <textarea id="message" name="message" placeholder="Your message..." required></textarea>
               </div>
+
+              <input type="hidden" name="_subject" value="New message from portfolio site" />
+              <input class="sr-only" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
 
               <div style="display:flex; gap:10px; flex-wrap:wrap">
                 <button class="btn primary" type="submit" data-i18n="form.send">Send</button>
@@ -1605,7 +2007,31 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
     </footer>
   </main>
 
-  <script>
+  
+
+    <!-- Result FX (Success/Error Overlay) -->
+    <div id="resultFx" class="resultfx" aria-hidden="true">
+      <div class="resultfx-plate" role="dialog" aria-modal="true" aria-label="Result message">
+        <div class="resultfx-icon" aria-hidden="true">
+          <svg id="resultFxIconOk" viewBox="0 0 24 24" fill="none" style="display:none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg id="resultFxIconErr" viewBox="0 0 24 24" fill="none" style="display:none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M6 6l12 12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="resultfx-title" id="resultFxTitle">—</div>
+        <div class="resultfx-msg" id="resultFxMsg">—</div>
+
+        <div class="resultfx-actions">
+          <button class="btn primary pill" id="resultFxOk" type="button">OK</button>
+        </div>
+      </div>
+    </div>
+
+<script>
     // =========================================================
     // Utilities
     // =========================================================
@@ -1649,7 +2075,7 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
         "hero.badge1": "Executive-ready dashboards",
         "hero.badge2": "SQL optimization & data modeling",
         "hero.badge3": "Reporting UI (HTML/CSS/JS)",
-        "hero.title": "Building BI systems <span class='gradient-text'>leaders can trust</span>.",
+        "hero.title": "<span class='gradient-text'>Building BI systems leaders can trust.</span>",
         "hero.lead": "I design end-to-end reporting: KPI definitions, clean data models, fast SQL, and polished report UIs. Ideal for Sales, Inventory, Finance, and Operations teams.",
         "hero.links": "Email: <a href='mailto:rezaakbari.dev@gmail.com' style='text-decoration:underline'>rezaakbari.dev@gmail.com</a> • GitHub: <a href='https://rezaakbari.github.io' target='_blank' rel='noopener' style='text-decoration:underline'>rezaakbari.github.io</a> • Phone: <a href='tel:+989216679724' style='text-decoration:underline'><span class='ltr'>+98 921 667 9724</span></a>",
 
@@ -1783,7 +2209,28 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
         "form.ph.email": "Email",
         "form.ph.msg": "Your message...",
         "form.err": "Please complete all fields.",
-        "form.ok": "Saved (demo). For real sending, connect Formspree or a backend.",
+        "form.ok": "Message sent successfully. I’ll get back to you soon.",
+        "form.fail": "Couldn’t send right now. Please try again or use Email / Phone.",
+        "form.sending": "Sending…",
+        "toast.okTitle": "Sent",
+        "toast.okMsg": "Your message was delivered.",
+        "toast.errTitle": "Error",
+        "cert.kicker": "Credentials",
+        "cert.title": "Certifications",
+        "cert.desc": "Selected certificates and proof of learning.",
+        "cert.head": "Certificates",
+        "cert.note": "Click “View Certificate” to preview (modal).",
+        "cert.view": "View Certificate",
+        "cert.modalTitle": "Certificate",
+        "cert.modalClose": "Close",
+        "result.ok": "OK",
+        "result.successTitle": "Message sent!",
+        "result.successDesc": "Thanks — I’ll get back to you soon.",
+        "result.errorTitle": "Couldn’t send",
+        "result.errorDesc": "Please try again, or email me directly.",
+
+
+
 
         footer: "© {year} — Built with HTML/CSS/JS • EN/FA • Light/Dark"
       },
@@ -1821,7 +2268,7 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
         "hero.badge1": "داشبوردهای مدیرپسند",
         "hero.badge2": "بهینه‌سازی SQL و مدل‌سازی داده",
         "hero.badge3": "UI گزارش (HTML/CSS/JS)",
-        "hero.title": "ساخت سیستم‌های BI که <span class='gradient-text'>مدیران به آن اعتماد کنند</span>.",
+        "hero.title": "<span class='gradient-text'>ساخت سیستم\u200cهای BI که مدیران به آن اعتماد کنند.</span>",
         "hero.lead": "گزارش‌گیری end-to-end: تعریف KPI، مدل داده تمیز، SQL سریع، و UI گزارش حرفه‌ای. مناسب تیم‌های فروش، انبار، مالی و عملیات.",
         "hero.links": "ایمیل: <a href='mailto:rezaakbari.dev@gmail.com' style='text-decoration:underline'>rezaakbari.dev@gmail.com</a> • گیت‌هاب: <a href='https://rezaakbari.github.io' target='_blank' rel='noopener' style='text-decoration:underline'>rezaakbari.github.io</a> • تلفن: <a href='tel:+989216679724' style='text-decoration:underline'><span class='ltr'>+98 921 667 9724</span></a>",
 
@@ -1955,7 +2402,28 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
         "form.ph.email": "ایمیل",
         "form.ph.msg": "پیام شما...",
         "form.err": "لطفاً همه فیلدها را کامل کنید.",
-        "form.ok": "ثبت شد (دمو). برای ارسال واقعی Formspree یا بک‌اند وصل کن.",
+        "form.ok": "پیام با موفقیت ارسال شد. به‌زودی پاسخ می‌دم.",
+        "form.fail": "ارسال پیام ناموفق بود. دوباره تلاش کن یا از ایمیل/تلفن استفاده کن.",
+        "form.sending": "در حال ارسال…",
+        "toast.okTitle": "ارسال شد",
+        "toast.okMsg": "پیام شما با موفقیت ارسال شد.",
+        "toast.errTitle": "خطا",
+        "cert.kicker": "گواهی‌ها",
+        "cert.title": "مدارک",
+        "cert.desc": "مدارک و گواهی‌های تخصصی من",
+        "cert.head": "مدارک",
+        "cert.note": "برای پیش‌نمایش روی «مشاهده مدرک» کلیک کن.",
+        "cert.view": "مشاهده مدرک",
+        "cert.modalTitle": "مدرک",
+        "cert.modalClose": "بستن",
+        "result.ok": "باشه",
+        "result.successTitle": "پیام با موفقیت ارسال شد!",
+        "result.successDesc": "ممنون! به‌زودی پاسخ می‌دم.",
+        "result.errorTitle": "ارسال ناموفق بود",
+        "result.errorDesc": "لطفاً دوباره تلاش کن یا مستقیم ایمیل بزن.",
+
+
+
 
         footer: "© {year} — ساخته‌شده با HTML/CSS/JS • دو‌زبانه • تم روشن/تیره"
       }
@@ -2011,6 +2479,10 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
       localStorage.setItem(LS_LANG, lang);
     }
 
+
+    // Expose language setter (robust fallback for inline onclick)
+    window.__setLang = (l)=>{ try{ applyLanguage(l); }catch(err){ console.error(err); } };
+
     // =========================================================
     // Nav active state on scroll
     // =========================================================
@@ -2053,12 +2525,11 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
     drawer?.addEventListener("click",(e)=>{ if(e.target === drawer) hideDrawer(); });
     $$(".drawer-nav a").forEach(a=>a.addEventListener("click", hideDrawer));
     document.addEventListener("keydown",(e)=>{ if(e.key==="Escape" && drawer.classList.contains("open")) hideDrawer(); });
-
     // =========================================================
     // Theme toggle
     // =========================================================
-    const themeBtn = $("#themeBtn");
-    themeBtn?.addEventListener("click", ()=>{
+    const themeToggle = $("#themeToggle");
+    themeToggle?.addEventListener("click", ()=>{
       const t = document.documentElement.getAttribute("data-theme") || "dark";
       setTheme(t === "dark" ? "light" : "dark");
     });
@@ -2196,7 +2667,60 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
       hint.className = "formhint " + (ok ? "ok" : "err");
     }
 
-    form?.addEventListener("submit",(e)=>{
+    
+    async function submitToFormspree(payloadForm){
+      const endpoint = payloadForm.getAttribute("data-formspree") || "";
+      if(!endpoint) throw new Error("Missing Formspree endpoint");
+      const fd = new FormData(payloadForm);
+      // Basic honeypot support
+      if((fd.get("_gotcha") || "").toString().trim()) return { ok:true, skipped:true };
+
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: fd
+      });
+
+      if(res.ok) return { ok:true };
+      let data = null;
+      try{ data = await res.json(); }catch(_){}
+      return { ok:false, status: res.status, data };
+    }
+
+    function toast(type, title, message){
+      const host = $("#toastHost");
+      if(!host) return;
+
+      const t = document.createElement("div");
+      t.className = "toast " + (type === "ok" ? "ok" : "err");
+      t.innerHTML = `
+        <div class="ico" aria-hidden="true">${type==="ok" ? "✓" : "!"}</div>
+        <div class="txt">
+          <b>${escapeHtml(title)}</b>
+          <p>${escapeHtml(message)}</p>
+        </div>
+        <button class="x" type="button" aria-label="Close">✕</button>
+      `;
+      host.appendChild(t);
+
+      const close = ()=>{
+        t.style.animation = "toastOut .18s ease forwards";
+        setTimeout(()=>t.remove(), 180);
+      };
+      t.querySelector(".x").addEventListener("click", close);
+      setTimeout(close, 4200);
+    }
+
+    function escapeHtml(s){
+      return (s??"").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    form?.addEventListener("submit", async (e)=>{
       e.preventDefault();
       const lang = currentLang();
       const dict = I18N[lang] || I18N.en;
@@ -2207,13 +2731,44 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
 
       if(!name || !email || !msg){
         setHint(dict["form.err"] || I18N.en["form.err"], false);
+        toast("err", dict["toast.errTitle"] || "Error", dict["form.err"] || I18N.en["form.err"]);
         return;
       }
-      setHint(dict["form.ok"] || I18N.en["form.ok"], true);
-      form.reset();
-    });
 
-    mailtoBtn?.addEventListener("click", ()=>{
+      const sendBtn = form.querySelector('button[type="submit"]');
+      const originalText = sendBtn?.textContent || "";
+      if(sendBtn){
+        sendBtn.disabled = true;
+        sendBtn.textContent = dict["form.sending"] || "Sending...";
+      }
+      setHint("", true);
+
+      try{
+        const result = await submitToFormspree(form);
+        if(result.ok){
+          setHint(dict["form.ok"] || I18N.en["form.ok"], true);
+          
+      // Fullscreen success animation
+      showResultFx("success");
+        toast("ok", dict["toast.okTitle"] || "Sent", dict["toast.okMsg"] || (dict["form.ok"] || I18N.en["form.ok"]));
+          form.reset();
+        }else{
+          const fallback = dict["form.fail"] || I18N.en["form.fail"] || "Something went wrong. Please try again.";
+          setHint(fallback, false);
+          toast("err", dict["toast.errTitle"] || "Error", fallback);
+        }
+      }catch(err){
+        const fallback = dict["form.fail"] || I18N.en["form.fail"] || "Something went wrong. Please try again.";
+        setHint(fallback, false);
+        toast("err", dict["toast.errTitle"] || "Error", fallback);
+      }finally{
+        if(sendBtn){
+          sendBtn.disabled = false;
+          sendBtn.textContent = dict["form.send"] || originalText || "Send";
+        }
+      }
+    });
+mailtoBtn?.addEventListener("click", ()=>{
       const name = ($("#name").value || "").trim();
       const email = ($("#email").value || "").trim();
       const msg = ($("#message").value || "").trim();
@@ -2221,17 +2776,174 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
       window.location.href = `mailto:rezaakbari.dev@gmail.com?subject=${subject}&body=${body}`;
     });
+    // =========================================================
+    // Certificate modal (Certifications section)
+    // =========================================================
+    function openCertModal(title, imgSrc){
+      const cm = document.getElementById("certModal");
+      const ct = document.getElementById("certModalTitle");
+      const ci = document.getElementById("certModalImg");
+      if(!cm || !ct || !ci) return;
+
+      const lang = currentLang();
+      const dict = I18N[lang] || I18N.en;
+
+      ct.textContent = title || (dict["cert.modalTitle"] || "Certificate");
+      ci.src = imgSrc || "";
+      ci.alt = title || (dict["cert.modalTitle"] || "Certificate");
+
+      cm.style.display = "flex";
+      cm.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCertModal(){
+      const cm = document.getElementById("certModal");
+      const ci = document.getElementById("certModalImg");
+      if(!cm) return;
+      cm.style.display = "none";
+      cm.setAttribute("aria-hidden","true");
+      if(ci) ci.src = "";
+      document.body.style.overflow = "";
+    }
+
+    // Close cert modal on backdrop click / ESC
+    document.addEventListener("click", (e)=>{
+      const cm = document.getElementById("certModal");
+      if(!cm || cm.style.display !== "flex") return;
+      if(e.target === cm) closeCertModal();
+    });
+    document.addEventListener("keydown", (e)=>{
+      const cm = document.getElementById("certModal");
+      if(e.key === "Escape" && cm && cm.style.display === "flex") closeCertModal();
+    });
+
 
     // =========================================================
+    
+    // =========================================================
+    // Fullscreen result animation (success / error)
+    // =========================================================
+
+    function showResultFx(type, customMsg){
+      const fx = document.getElementById("resultFx");
+      if(!fx) return;
+
+      const isSuccess = (type === "success");
+      const isFa = (document.documentElement.lang === "fa");
+
+      const title = isSuccess
+        ? (isFa ? "ارسال موفق ✅" : "Sent successfully ✅")
+        : (isFa ? "ارسال ناموفق ❌" : "Send failed ❌");
+
+      const msg = customMsg || (
+        isSuccess
+          ? (isFa ? "پیام شما با موفقیت ارسال شد. به‌زودی بررسی می‌کنم." : "Your message was sent. I’ll review it soon.")
+          : (isFa ? "ارسال پیام انجام نشد. لطفاً دوباره تلاش کنید یا از ایمیل مستقیم استفاده کنید." : "Message couldn’t be sent. Please try again or use direct email.")
+      );
+
+      const titleEl = document.getElementById("resultFxTitle");
+      const msgEl   = document.getElementById("resultFxMsg");
+      if(titleEl) titleEl.textContent = title;
+      if(msgEl)   msgEl.textContent = msg;
+
+      fx.setAttribute("data-type", isSuccess ? "success" : "error");
+
+      // Show overlay + lock scroll
+      fx.classList.add("open");
+      document.body.style.overflow = "hidden";
+
+      // Trigger animation reliably
+      fx.classList.remove("show");
+      void fx.offsetWidth; // reflow
+      fx.classList.add("show");
+
+      // Auto-hide after 5s (as requested)
+      try{ clearTimeout(window.__resultFxTimer); }catch(e){}
+      window.__resultFxTimer = setTimeout(()=>{ hideResultFx(); }, 5000);
+    }
+
+      // Spark burst (particles)
+      if(burst){
+        burst.innerHTML = "";
+        const n = 14;
+        for(let i=0;i<n;i++){
+          const s = document.createElement("span");
+          s.className = "spark";
+          const a = Math.random() * Math.PI * 2;
+          const r1 = 120 + Math.random()*120;
+          const x1 = Math.cos(a) * r1;
+          const y1 = Math.sin(a) * r1;
+          s.style.left = "50%";
+          s.style.top  = "40%";
+          s.style.setProperty("--x0", `0px`);
+          s.style.setProperty("--y0", `0px`);
+          s.style.setProperty("--x1", `${x1}px`);
+          s.style.setProperty("--y1", `${y1}px`);
+          s.style.background = isOk
+            ? "linear-gradient(135deg, rgba(49,208,170,.95), rgba(255,255,255,.45))"
+            : "linear-gradient(135deg, rgba(255,77,90,.95), rgba(255,255,255,.35))";
+          burst.appendChild(s);
+        }
+      }
+
+      // Show overlay (stays until user clicks OK / backdrop / ESC)
+      fx.classList.remove("show");
+      fx.classList.add("open");
+      fx.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+
+      // Force reflow then animate opacity + sparks
+      void fx.offsetWidth;
+      fx.classList.add("show");
+
+      // focus OK button for accessibility
+      const okBtn = $("#resultFxOk");
+      okBtn?.focus();
+    
+
+    function hideResultFx(){
+      try{ clearTimeout(window.__resultFxTimer); }catch(e){}
+
+      const fx = $("#resultFx");
+      if(!fx) return;
+
+      // fade out
+      fx.classList.remove("show");
+
+      // after transition, fully remove from layout so it won't block clicks
+      window.setTimeout(()=>{
+        fx.classList.remove("open");
+        fx.setAttribute("aria-hidden","true");
+        document.body.style.overflow = "";
+        try{ (window.__lastFocusEl && window.__lastFocusEl.focus) ? window.__lastFocusEl.focus() : null; }catch(_){}
+        window.__lastFocusEl = null;
+      }, 220);
+    }
+// allow ESC / click to close early
+    const resultFxEl = $("#resultFx");
+    const resultFxOk = $("#resultFxOk");
+
+    resultFxOk?.addEventListener("click", hideResultFx);
+    resultFxEl?.addEventListener("click", (e)=>{
+      // click on backdrop closes (not card)
+      if(e.target === resultFxEl) hideResultFx();
+    });
+    document.addEventListener("keydown",(e)=>{
+      if(e.key==="Escape" && resultFxEl?.classList.contains("show")) hideResultFx();
+    });
+
     // Init: language + theme (EN default)
+
     // =========================================================
     setTheme(currentTheme());
     applyLanguage(currentLang());
 
-    $("#btnEN").addEventListener("click", ()=>applyLanguage("en"));
-    $("#btnFA").addEventListener("click", ()=>applyLanguage("fa"));
-
-    // Set language button active on load
+    const __btnEN = $("#btnEN");
+    const __btnFA = $("#btnFA");
+    __btnEN && __btnEN.addEventListener("click", ()=>applyLanguage("en"));
+    __btnFA && __btnFA.addEventListener("click", ()=>applyLanguage("fa"));
+// Set language button active on load
     $("#btnEN").classList.toggle("active", currentLang()==="en");
     $("#btnFA").classList.toggle("active", currentLang()==="fa");
   </script>
@@ -2248,6 +2960,15 @@ html[data-theme="dark"] button[data-i18n="portfolio.details"]{
     </div>
   </div>
 </div>
+
+
+  <div class="toast-host" id="toastHost" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Fullscreen Result Animation Overlay -->
+  
+  <!-- Fullscreen Result Animation (Success / Error) -->
+      
+
 
 </body>
 </html>
