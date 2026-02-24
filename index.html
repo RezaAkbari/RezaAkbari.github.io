@@ -167,7 +167,11 @@
 
       --grid: rgba(255,255,255,.05);
       --glass: blur(12px);
-    }
+    
+  --hero-img: url("images/hero.png");
+  --hero-text: #ffffff;
+  --hero-overlay: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
 
     /* Light theme */
     html[data-theme="light"]{
@@ -183,7 +187,11 @@
       --shadow2: 0 10px 30px rgba(10, 14, 30,.08);
       --grid: rgba(10, 14, 30,.05);
       --glass: blur(10px);
-    }
+    
+  --hero-img: url("images/hero-light.jpg");
+  --hero-text: #0b1020;
+  --hero-overlay: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.85));
+}
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -1408,15 +1416,10 @@ resultfx-orb{
 
   <header class="topbar" role="banner">
     <div class="container topbar-inner">
-      <a class="brand" href="#home" aria-label="Home">
-        <span class="logo" aria-hidden="true"></span>
-        <span class="t">
-          <span class="name" data-i18n="brand.name">Reza Akbari</span>
-          <span class="role" data-i18n="brand.role"><span data-i18n="hero.role">BI Developer • SQL Developer • Data Analyst</span></span>
-        </span>
-      </a>
+
 
       <nav class="main-nav" aria-label="Primary">
+
         <a class="navlink" href="#home" data-i18n="nav.home">Home</a>
         <a class="navlink" href="#services" data-i18n="nav.services">Services</a>
         <a class="navlink" href="#resume" data-i18n="nav.resume">Resume</a>
@@ -1520,20 +1523,20 @@ resultfx-orb{
   content:"";
   position:absolute;
   inset:0;
-  background:url("images/hero.jpg") center 18%/cover no-repeat;
+  background: var(--hero-img) center 18%/cover no-repeat;
   z-index:-2;
 }
 
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+  background: var(--hero-overlay);
   z-index:-1;
 }
 
 .hero-center{
   z-index:2;
-  color:#fff;
+  color: var(--hero-text);
 }
 
 .hero-name{
@@ -1545,6 +1548,27 @@ resultfx-orb{
 .hero-typed{
   font-size:26px;
   font-weight:700;
+}
+
+
+/* Animated underline for the typed role (follows text width) */
+#typedText{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px; /* space for underline */
+}
+#typedText::after{
+  content:"";
+  position:absolute;
+  inset-inline: 0;
+  bottom: 2px;
+  height: 5px;
+  border-radius: 999px;
+  /* ثابت، بدون انیمیشن — کل گرادیانت روی کل متن */
+  background: linear-gradient(90deg, var(--a), var(--a2));
+  background-size: 100% 100%;
+  opacity: .95;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
 }
 
 html[lang="fa"] .hero-name{
@@ -1606,7 +1630,7 @@ html[lang="fa"] .hero-typed{
 
   function applyHeroStaticText(){
     if(langNow() === "fa"){
-      prefix.textContent = "من";
+      prefix.textContent = "";
       heroName.textContent = "رضا اکبری";   // ✅ نام فارسی
     } else {
       prefix.textContent = "I'm";
@@ -1665,7 +1689,84 @@ html[lang="fa"] .hero-typed{
   mo.observe(document.documentElement, { attributes: true });
 })();
 </script>
-    <!-- Services -->
+    
+<!-- Intro Summary (between Hero and Services) -->
+<section id="intro" class="intro" aria-label="Intro summary">
+  <div class="container hero-inner">
+    <div class="card">
+      <div class="hero-badge-row">
+        <span class="chip" data-i18n="hero.badge1">Executive-ready dashboards</span>
+        <span class="chip" data-i18n="hero.badge2">SQL optimization & data modeling</span>
+        <span class="chip" data-i18n="hero.badge3">Reporting UI (HTML/CSS/JS)</span>
+      </div>
+
+      <h1 data-i18n="hero.title">
+        Building BI systems <span class="gradient-text">leaders can trust</span>.
+      </h1>
+
+      <p class="lead" data-i18n="hero.lead">
+        I design end-to-end reporting: KPI definitions, clean data models, fast SQL, and polished report UIs.
+        Ideal for Sales, Inventory, Finance, and Operations teams.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="#portfolio" data-i18n="cta.portfolio">View Portfolio</a>
+        <a class="btn" href="#resume" data-i18n="cta.resume">Resume</a>
+        <a class="btn ghost" href="#contact" data-i18n="cta.contact">Contact</a>
+        <a class="btn ghost" href="#" id="printBtn" data-i18n="cta.print">Print / Save PDF</a>
+      </div>
+
+      <p class="section-desc" style="margin-top:14px" data-i18n="hero.links">
+        Email: <a href="mailto:rezaakbari.dev@gmail.com" style="text-decoration:underline">rezaakbari.dev@gmail.com</a>
+        • GitHub: <a href="https://rezaakbari.github.io" target="_blank" rel="noopener" style="text-decoration:underline">rezaakbari.github.io</a>
+        • Phone: <a href="tel:+989216679724" class="ltr" style="text-decoration:underline"><span class='ltr'>+98 921 667 9724</span></a>
+      </p>
+    </div>
+
+    <div class="card soft">
+      <div class="section-head" style="margin-bottom:12px">
+        <div>
+          <div class="kicker"><span class="dot"></span><span data-i18n="quick.kicker">Quick highlights</span></div>
+          <h2 class="section-title" style="margin-top:8px" data-i18n="quick.title">Snapshot</h2>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <b data-i18n="quick.m1b">3+ years</b>
+          <small data-i18n="quick.m1s">BI / ERP experience</small>
+        </div>
+        <div class="metric">
+          <b data-i18n="quick.m2b">30+ projects</b>
+          <small data-i18n="quick.m2s">Reports & dashboards</small>
+        </div>
+        <div class="metric">
+          <b>SQL</b>
+          <small data-i18n="quick.m3s">Performance & modeling</small>
+        </div>
+        <div class="metric">
+          <b>Power BI</b>
+          <small data-i18n="quick.m4s">DAX • Modeling • Storytelling</small>
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+      <p class="section-desc" data-i18n="quick.note">
+        Tip: Replace these metrics with your real numbers (e.g., query runtime reductions, revenue impact, SLA improvements).
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Intro section spacing (keeps existing hero-inner/cards styling) */
+.intro{
+  padding: 38px 0 18px;
+}
+</style>
+
+
+<!-- Services -->
     <section id="services" aria-label="Services">
       <div class="container">
         <div class="section-head">
@@ -2682,22 +2783,51 @@ html[lang="fa"] .hero-typed{
     // =========================================================
     // Nav active state on scroll
     // =========================================================
-    const navLinks = $$(".navlink");
-    const sections = ["home","services","resume","skills","portfolio","contact"]
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
+// Nav active state on scroll (robust: avoids wrong active link)
+// =========================================================
+const navLinks = $$(".navlink");
+const sections = ["home","services","resume","skills","portfolio","contact"]
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
 
-    function setActive(id){
-      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+function setActive(id){
+  navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+}
+
+const topbar = document.querySelector("header.topbar");
+function headerOffset(){
+  const h = topbar ? topbar.getBoundingClientRect().height : 0;
+  return h + 18; // breathing space under sticky header
+}
+
+function updateActiveByScroll(){
+  const offset = headerOffset();
+  let currentId = sections[0]?.id || "home";
+
+  for(const s of sections){
+    const r = s.getBoundingClientRect();
+    // active when the header-offset line is inside the section
+    if(r.top <= offset && r.bottom > offset){
+      currentId = s.id;
     }
+  }
+  if(currentId) setActive(currentId);
+}
 
-    const io = new IntersectionObserver((entries)=>{
-      const visible = entries
-        .filter(e=>e.isIntersecting)
-        .sort((a,b)=>b.intersectionRatio - a.intersectionRatio)[0];
-      if(visible?.target?.id) setActive(visible.target.id);
-    }, {threshold:[0.25,0.35,0.5,0.7]});
-    sections.forEach(s=>io.observe(s));
+let __navTicking = false;
+window.addEventListener("scroll", ()=>{
+  if(__navTicking) return;
+  __navTicking = true;
+  requestAnimationFrame(()=>{
+    updateActiveByScroll();
+    __navTicking = false;
+  });
+}, {passive:true});
+
+window.addEventListener("resize", updateActiveByScroll);
+// Initial
+updateActiveByScroll();
+
 
     // =========================================================
     // Drawer (mobile)
